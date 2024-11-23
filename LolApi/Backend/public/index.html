@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/lol.jpg">
+  <title>API LOL</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+<body>
+  <h1 class="none">LoL - Champions</h1>
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="assets/background.jpg" alt="Fondo de League of Legends"></div>
+
+    <div class="title-container valign-wrapper center-align bg">
+      <h2 class="title amber-text accent-4">Utilizá tu <br><strong>CAMPEÓN</strong></h2>
+      <div class="linea1"></div>
+      <div class="linea2"></div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <section id="descripcion" class="section">
+      <h3 class="amber-text accent-4">Descripción de la Aplicación</h3>
+      <p class="flow-text white-text">
+        Nuestra aplicación de League of Legends (LoL) proporciona información detallada sobre los campeones del juego.
+        Utilizando una API REST, los usuarios pueden acceder a datos como nombres, roles, estadísticas, origen,
+        recursos, alineamiento y dificultad de uso de los campeones.
+        Esta herramienta es ideal para jugadores que buscan mejorar su conocimiento del juego.
+      </p>
+    </section>
+
+    <section id="rutas" class="section">
+      <h3 class="amber-text accent-4">Rutas de la API</h3>
+
+
+      <ul class="collapsible amber accent-4 white-text">
+        <li>
+          <div class="collapsible-header">Rutas para navegar por la API</div>
+          <div class="collapsible-body">
+            <table class="striped responsive-table white-text">
+              <thead>
+                <tr>
+                  <th>Rutas</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>/api/champions</td>
+                  <td>Obtiene todos los campeones</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/(id del campeon)</td>
+                  <td>Obtiene un campeón específico por ID</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/linea/(linea del campeon)</td>
+                  <td>Filtra campeones por línea de juego</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/recurso/(recurso del campeon)</td>
+                  <td>Filtra campeones por tipo de recurso</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/origen/(origen del campeon)</td>
+                  <td>Filtra campeones por origen</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/roles/(rol del campeon)</td>
+                  <td>Filtra campeones por rol</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/dificultad/(dificultad del campeon)</td>
+                  <td>Filtra campeones por nivel de dificultad</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/nombre/(nombre del campeon)</td>
+                  <td>Filtra campeones por nombre</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">Rutas para editar la API</div>
+          <div class="collapsible-body">
+            <table class="striped responsive-table white-text">
+              <thead>
+                <tr>
+                  <th>Rutas</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>/api/champions</td>
+                  <td>Crea un nuevo campeón (POST)</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/:id</td>
+                  <td>Actualiza un campeón por ID (PUT)</td>
+                </tr>
+                <tr>
+                  <td>/api/champions/:id</td>
+                  <td>Elimina un campeón por ID (DELETE)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <section id="app" class="section container">
+    <div class="row">
+      <!-- Las tarjetas de campeones se generarán aquí dinámicamente -->
+    </div>
+    <div id="pagination" class="pagination-container"></div>
+  </section>
+
+  <footer class="page-footer amber accent-4 white-text">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Información</h5>
+          <p class="grey-text text-lighten-4"><span>Alumnos:</span> German Martini - Lucio Boxall</p>
+          <p class="grey-text text-lighten-4"><span>Docente:</span> Camila Marcos Galbán</p>
+          <p class="grey-text text-lighten-4"><span>Comisión:</span> DWN4AV</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <a href="https://davinci.edu.ar/" target="_blank"><img src="assets/davinci.png" alt="Logo DaVinci" class="responsive-img"></a>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container valign-wrapper white-text">
+          © 2024 German Martini - Lucio Boxall
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="materialice.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
