@@ -1,27 +1,33 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.scss";
+import { Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar.jsx";
+import { Footer } from "./components/Footer.jsx";
 import { Inicio } from "./views/inicio.jsx";
-import { Champions } from "./views/campeones.jsx";
-import { Maps } from "./views/mapas.jsx";
-import { IniciarSesion } from "./views/iniciarSesion.jsx";
-import { Registrar } from "./views/registrar.jsx";
+import { Campeones } from "./views/campeones.jsx";
+import { Mapas } from "./views/mapas.jsx";
+import LoginForm from "./components/login.jsx";
+import RegisterForm from "./components/register.jsx";
+import ChampionsCRUD from './components/ChampionsCRUD.jsx';
+import MapsPage from './views/MapsPage';
 
-
-export default function App() {
+function App() {
   return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <div className="app-container">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/inicio" element={<Inicio />} />
-        <Route path="/campeones" element={<Champions />} />
-        <Route path="/mapas" element={<Maps />} />
-        <Route path="/iniciar-sesion" element={<IniciarSesion />} />
-        <Route path="/registrar" element={<Registrar />} />
-      </Routes>
-    </Router>
+      <main className="main-content">
+        <Routes>
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/campeones" element={<Campeones />} />
+          <Route path="/mapas" element={<Mapas />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/registro" element={<RegisterForm />} />
+          <Route path="/crud-campeones" element={<ChampionsCRUD />} />
+          <Route path="/crud-mapas" element={<MapsPage />} />
+          <Route path="/" element={<Inicio />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
-export { App };
+export default App;

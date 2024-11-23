@@ -1,0 +1,580 @@
+/* Estilos generales */
+body {
+  background: rgb(24, 1, 24);
+  background: linear-gradient(
+    45deg,
+    rgba(24, 1, 24, 1) 0%,
+    rgba(20, 1, 36, 1) 53%,
+    rgba(26, 14, 43, 1) 100%
+  );
+  padding-top: 64px;
+}
+
+.none {
+  display: none;
+}
+
+/* Estilos del Banner */
+.bg {
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.3785889355742297) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.title-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.valign-wrapper {
+  justify-content: center;
+}
+
+h2 {
+  font-size: 3rem;
+  z-index: 1000;
+  line-height: 1;
+}
+
+strong {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 5rem;
+}
+
+.title {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.432);
+}
+
+.linea1 {
+  width: 150px;
+  height: 3px;
+  margin: 10px 0px;
+  background-color: rgba(223, 192, 17, 0.986);
+}
+
+.linea2 {
+  width: 75px;
+  height: 3px;
+  background-color: rgba(223, 192, 17, 0.986);
+  margin: 5px 0px;
+}
+
+/* Estilos del Collapsible */
+.collapsible-header {
+  background-color: #ffab00 !important;
+  border-bottom: 1px solid #ffab00 !important;
+}
+
+.collapsible {
+  border-top: 1px solid #ffab00;
+  border-right: 1px solid #ffab00;
+  border-left: 1px solid #ffab00;
+  margin: .5rem 0 1rem 0;
+}
+
+.collapsible-body {
+  border-bottom: 1px solid #ffab00;
+}
+
+/* Estilos del Footer */
+.page-footer {
+  flex-shrink: 0;
+  background-color: transparent !important;
+  margin-top: auto;
+}
+
+.page-footer .footer-copyright {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.page-footer span {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos de Cards */
+.card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card .card-image .card-title {
+  background: rgba(0,0,0,0.7);
+  width: 100%;
+  padding: 20px !important;
+}
+
+.card .collection {
+  border: none;
+  margin: 0;
+}
+
+.card .collection .collection-item {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 10px;
+}
+
+.card .collection .collection-item:last-child {
+  border-bottom: none;
+}
+
+.card .collection .collection-item strong {
+  color: #ffab00;
+  margin-right: 5px;
+  font-size: 1em;
+}
+
+.row {
+  row-gap: 20px !important;
+}
+
+/* Estilos del NavBar */
+.nav-extended {
+  background: transparent !important;
+  box-shadow: none !important;
+  position: fixed !important;
+  width: 100% !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+.nav-wrapper {
+  background: rgb(24, 1, 24) !important;
+  background: linear-gradient(
+    45deg,
+    rgba(24, 1, 24, 1) 0%,
+    rgba(20, 1, 36, 1) 53%,
+    rgba(26, 14, 43, 1) 100%
+  ) !important;
+  z-index: 9999 !important;
+}
+
+.nav-wrapper a {
+  color: #ffab00 !important;
+  z-index: 10000 !important;
+}
+
+.nav-wrapper .brand-logo {
+  z-index: 10000 !important;
+}
+
+.nav-wrapper .brand-logo img {
+  margin: 10px !important;
+  width: 100px !important;
+  height: auto !important;
+}
+
+/* Ajuste para el contenido debajo del nav */
+body {
+  padding-top: 64px;
+}
+
+/* Ajuste para el parallax-container */
+.parallax-container {
+  margin-top: -64px;
+}
+
+/* Estilos para los enlaces del nav */
+.nav-wrapper ul li a {
+  transition: color 0.3s ease;
+}
+
+.nav-wrapper ul li a:hover {
+  color: #ffd740 !important; /* Un tono más claro de amber */
+}
+
+/* Estilo para el botón de cerrar sesión */
+.nav-wrapper ul li a[style*="cursor: pointer"]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estructura de la aplicación */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1 0 auto;
+  padding-bottom: 2rem; /* Espacio para el footer */
+}
+
+/* Estilos CRUD */
+.crud-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-container {
+  background: var(--background-secondary);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.champion-card {
+  background: rgba(26, 14, 43, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(255, 171, 0, 0.2);
+}
+
+.champion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.champion-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(255, 171, 0, 0.3);
+}
+
+.champion-info {
+  padding: 20px;
+  color: #fff;
+}
+
+.champion-info h3 {
+  color: #ffab00;
+  font-size: 1.5rem;
+  margin: 0 0 15px 0;
+}
+
+.champion-info p {
+  margin: 8px 0;
+  color: #e0e0e0;
+}
+
+.champion-info strong {
+  color: #ffab00;
+  font-size: 1rem;
+  font-style: normal;
+}
+
+.champion-actions {
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 171, 0, 0.2);
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-edit {
+  background: #2196f3;
+  color: white;
+}
+
+.btn-save {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-delete {
+  background: #f44336;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.edit-form {
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 171, 0, 0.2);
+  display: grid;
+  gap: 10px;
+}
+
+.edit-form .form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 171, 0, 0.3);
+  border-radius: 4px;
+  background: rgba(26, 14, 43, 0.9);
+  color: white;
+}
+
+.edit-form .form-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.error-message {
+  background: var(--error-background);
+  color: var(--error-text);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.map-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.map-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.champion-card:hover .map-image img {
+  transform: scale(1.1);
+}
+
+.maps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.crud-page {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.crud-header {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.crud-title {
+    color: #e6e6e6;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.crud-subtitle {
+    color: #cccccc;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.crud-content {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario */
+.form-container {
+    background-color: #333333;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.form-container h3 {
+    color: #e6e6e6;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-input {
+    background-color: #404040;
+    border: 1px solid #555555;
+    color: #e6e6e6;
+    padding: 0.8rem;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.checkbox-group label {
+    color: #e6e6e6;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-edit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.btn-save {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-save:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    background-color: #dc3545;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Estilos para el formulario de edición */
+.edit-form {
+    background-color: #404040;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.edit-form .form-input {
+    margin-bottom: 1rem;
+}
+
+.page-container.crud-page {
+    padding: 2rem;
+    background-color: #1a1a1a;
+    min-height: calc(100vh - 64px);
+}
+
+.page-header.crud-header {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.crud-title {
+    color: #e6e6e6;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.crud-subtitle {
+    color: #cccccc;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.page-content.crud-content {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 8px;
+}

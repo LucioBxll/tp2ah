@@ -2,20 +2,11 @@ import Champions from "../models/lolModel.js";
 import { validateChamp, validateUpdateChamp } from "../validations/validation.js";
 
 export const obtenerTodosLosChamps = async (req, res) => {
-    const limit = parseInt(req.query.limit) || 20;
-    const page = parseInt(req.query.page) || 1;
-
     try {
-        const total = await Champions.countDocuments();
-        const champs = await Champions.find()
-            .limit(limit)
-            .skip((page - 1) * limit);
-
+        const champs = await Champions.find();
         res.json({
             champs,
-            totalPages: Math.ceil(total / limit),
-            currentPage: page,
-            total
+            total: champs.length
         });
     } catch (error) {
         console.error('Error al obtener campeones:', error);

@@ -13,17 +13,17 @@ export const validateChamp = (data) => {
     return schema.validate(data);
 };
 
-export const validateUpdateChamp = (data) => {
+export const validateUpdateChamp = (champ) => {
     const schema = Joi.object({
-        nombre: Joi.string(),
-        imagen: Joi.string(),
-        origen: Joi.string(),
-        recurso: Joi.string(),
-        lineas: Joi.array(),
-        roles: Joi.array(),
-        dificultad_uso: Joi.string()
+        nombre: Joi.string().required(),
+        imagen: Joi.string().required(),
+        origen: Joi.string().required(),
+        recurso: Joi.string().required(),
+        lineas: Joi.array().items(Joi.string()).required(),
+        roles: Joi.array().items(Joi.string()).required(),
+        dificultad_uso: Joi.string().required(),
     });
-    return schema.validate(data);
+    return schema.validate(champ);
 };
 
 export const validateUser = (data) => {
@@ -59,4 +59,3 @@ export const validateUpdateMap = (data) => {
     });
     return schema.validate(data);
 };
-
