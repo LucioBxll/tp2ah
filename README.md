@@ -12,8 +12,11 @@ Estructura del Proyecto
 
 lol_react/
 ├── Api_lol_react/
+
 │   ├── src/
+
 │   │   ├── components/
+
 │   │   │   ├── Banner.jsx
 │   │   │   ├── LoginForm.jsx
 │   │   │   ├── MapCard.jsx
