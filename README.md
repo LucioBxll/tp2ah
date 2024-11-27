@@ -8,6 +8,8 @@ Lista de Campeones: Muestra una lista de campeones con detalles como origen, lí
 Lista de Mapas: Muestra una lista de mapas con detalles como líneas y si tiene jungla.
 Navegación: Navegación sencilla entre las diferentes secciones de la aplicación utilizando React Router.
 Estructura del Proyecto
+
+
 lol_react/
 ├── Api_lol_react/
 │   ├── src/
@@ -31,6 +33,8 @@ lol_react/
 │   ├── package.json
 │   └── README.md
 └── README.md
+
+
 Instalación
 Clona el repositorio:
 
