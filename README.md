@@ -18,23 +18,41 @@ lol_react/
 │   │   ├── components/
 
 │   │   │   ├── Banner.jsx
+
 │   │   │   ├── LoginForm.jsx
+
 │   │   │   ├── MapCard.jsx
+
 │   │   │   ├── NavBar.jsx
+
 │   │   │   ├── RegistroForm.jsx
+
 │   │   │   └── LolChampCard.jsx
+
 │   │   ├── views/
+
 │   │   │   ├── campeones.jsx
+
 │   │   │   ├── inicio.jsx
+
 │   │   │   ├── mapas.jsx
+
 │   │   │   ├── iniciarSesion.jsx
+
 │   │   │   └── registrar.jsx
+
 │   │   ├── App.jsx
+
 │   │   ├── main.jsx
+
 │   │   └── index.scss
+
 │   ├── public/
+
 │   ├── package.json
+
 │   └── README.md
+
 └── README.md
 
 
