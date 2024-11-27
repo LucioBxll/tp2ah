@@ -42,11 +42,13 @@ const Register = () => {
     }}>
       <form onSubmit={handleRegister}>
         <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.5rem' }}>Username</label>
+          <label htmlFor="register-username">Usuario</label>
           <input
             type="text"
+            id="register-username"
             value={userData.username}
             onChange={(e) => setUserData({ ...userData, username: e.target.value })}
+            autoComplete="username"
             style={{
               width: '100%',
               padding: '0.5rem',
@@ -56,11 +58,13 @@ const Register = () => {
           />
         </div>
         <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.5rem' }}>Password</label>
+          <label htmlFor="register-password">Contraseña</label>
           <input
             type="password"
+            id="register-password"
             value={userData.password}
             onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+            autoComplete="new-password"
             style={{
               width: '100%',
               padding: '0.5rem',
@@ -81,7 +85,7 @@ const Register = () => {
             width: '100%'
           }}
         >
-          Register
+          Registrarse
         </button>
         {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
       </form>

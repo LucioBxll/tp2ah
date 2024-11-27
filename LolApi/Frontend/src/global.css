@@ -25,10 +25,14 @@ body {
 }
 
 .title-container {
-  width: 100%;
+  padding-top: 100px;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
   height: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .valign-wrapper {
@@ -69,6 +73,7 @@ strong {
 .collapsible-header {
   background-color: #ffab00 !important;
   border-bottom: 1px solid #ffab00 !important;
+  font-size: 18px !important;
 }
 
 .collapsible {
@@ -80,6 +85,7 @@ strong {
 
 .collapsible-body {
   border-bottom: 1px solid #ffab00;
+  font-size: 18px !important;
 }
 
 /* Estilos del Footer */
@@ -577,4 +583,199 @@ body {
     background-color: #2a2a2a;
     padding: 2rem;
     border-radius: 8px;
+}
+
+.title {
+  font-size: 3rem;
+  line-height: 1.2;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.432);
+}
+
+.title strong {
+  display: block;
+  font-size: 5rem;
+  font-style: italic;
+  font-weight: 900;
+}
+
+/* Estilos para el campo de búsqueda */
+.search-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0 15px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-wrapper .input-field {
+  border: none;
+  margin: 0;
+  position: relative;
+}
+
+.search-input {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: white !important;
+  margin: 0 !important;
+  padding: 12px 12px 12px 40px !important;
+  height: 48px !important;
+  width: 100% !important;
+  font-size: 16px !important;
+}
+
+.search-input:focus {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  fill: #ffc107;
+  pointer-events: none;
+}
+
+/* Eliminar el fondo blanco al autocompletar */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Estilos para la paginación */
+.pagination-container {
+  margin: 2rem 0;
+}
+
+.pagination li {
+  margin: 0 2px;
+}
+
+.pagination li a {
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pagination li.active {
+  background-color: #ffc107 !important;
+}
+
+.pagination li.disabled a {
+  color: rgba(255, 255, 255, 0.4);
+  cursor: default;
+}
+
+.pagination li:not(.active):not(.disabled):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Para los puntos suspensivos */
+.pagination li.disabled span {
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 10px;
+}
+
+/* Estilos para los iconos SVG */
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  fill: #ffc107; /* Color ámbar para coincidir con tu tema */
+}
+
+.pagination-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.pagination li.disabled .pagination-icon {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
+.pagination li:not(.disabled) .pagination-icon {
+  fill: #fff;
+}
+
+.pagination li {
+  padding: 0 10px;
+}
+
+.pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.pagination li.disabled {
+  cursor: default;
+}
+
+.pagination li:not(.disabled):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* Ajuste del padding del input para el icono */
+.search-input {
+  padding-left: 45px !important;
+}
+
+.search-wrapper .input-field {
+  position: relative;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pagination li.active {
+  background-color: #ffc107 !important;
+}
+
+.pagination li.disabled {
+  cursor: default;
+}
+
+.pagination li:not(.active):not(.disabled):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-wrapper {
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.search-wrapper:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.preloader-wrapper .spinner-amber-only {
+  border-color: #ffc107;
 }

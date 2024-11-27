@@ -5,26 +5,18 @@ export function MapCardComponent({
   lineas = '0', 
   jungla = false 
 }) {
-  const getImagePath = (mapName) => {
-    if (!mapName || mapName === 'Sin nombre') return '/assets/maps/default.jpg';
-    return `/assets/maps/${mapName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
-  };
-
   return (
-    <div className="champion-card">
-      <div className="map-image">
-        <img 
-          src={getImagePath(name)}
-          alt={`Mapa ${name}`}
-          onError={(e) => {
-            e.target.src = '/assets/maps/default.jpg';
-          }}
-        />
-      </div>
-      <div className="champion-info">
-        <h3>{name}</h3>
-        <p><strong>Líneas:</strong> {lineas}</p>
-        <p><strong>Jungla:</strong> {jungla ? 'Sí' : 'No'}</p>
+    <div className="card blue-grey darken-3">
+      <div className="card-content white-text">
+        <span className="card-title amber-text">{name}</span>
+        <ul className="collection blue-grey darken-3">
+          <li className="collection-item blue-grey darken-3 white-text">
+            <strong>Cantidad de líneas:</strong> {lineas}
+          </li>
+          <li className="collection-item blue-grey darken-3 white-text">
+            <strong>Jungla:</strong> {jungla ? 'Sí' : 'No'}
+          </li>
+        </ul>
       </div>
     </div>
   );

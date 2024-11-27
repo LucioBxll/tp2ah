@@ -28,6 +28,9 @@ const publicRouter = express.Router();
 // Rutas públicas
 publicRouter.post('/registro', crearUsuario);
 publicRouter.post('/login', iniciarSesion);
+publicRouter.get('/verify', autenticar, (req, res) => {
+    res.json({ isValid: true, user: req.usuario });
+});
 
 // Rutas protegidas que requieren autenticación
 router.use(autenticar);

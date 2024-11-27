@@ -15,22 +15,33 @@ const MapsCRUD = () => {
 
   useEffect(() => {
     const fetchMaps = async () => {
+      console.log('🔄 Iniciando fetchMaps - Obteniendo lista de mapas...');
       try {
         const token = localStorage.getItem('token');
         if (!token) {
+          console.log('❌ No se encontró token de autenticación');
           navigate('/login');
           return;
         }
 
+        console.log('📤 Realizando petición GET a /api/mapas');
         const response = await fetch("http://localhost:3000/api/mapas", {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         });
-        if (!response.ok) throw new Error('Error al cargar mapas');
+
+        if (!response.ok) {
+          console.error(`❌ Error en la respuesta: ${response.status} - ${response.statusText}`);
+          throw new Error('Error al obtener los mapas');
+        }
+
         const data = await response.json();
+        console.log('✅ Mapas obtenidos exitosamente:', data);
         setMaps(data);
       } catch (error) {
+        console.error('❌ Error en fetchMaps:', error.message);
         setError(error.message);
       }
     };
@@ -39,82 +50,90 @@ const MapsCRUD = () => {
   }, [navigate]);
 
   const addMap = async () => {
+    console.log('🔄 Iniciando addMap con datos:', newMap);
     try {
-      if (newMap.nombre) {
-        const token = localStorage.getItem('token');
-        const response = await fetch("http://localhost:3000/api/mapas", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            nombre: newMap.nombre,
-            linea: parseInt(newMap.linea),
-            jungla: newMap.jungla
-          }),
-        });
-        
-        if (!response.ok) {
-          const errorData = await response.json();
-          setError(errorData.message || 'Error al agregar el mapa');
-          return;
-        }
-
-        const addedMap = await response.json();
-        setMaps([...maps, addedMap]);
-        setNewMap({
-          nombre: "",
-          linea: "",
-          jungla: false
-        });
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+        return;
       }
+
+      const response = await fetch("http://localhost:3000/api/mapas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(newMap),
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.message || 'Error al agregar el mapa');
+        return;
+      }
+
+      const addedMap = await response.json();
+      console.log('Mapa agregado exitosamente:', addedMap);
+      setMaps([...maps, addedMap]);
+      setNewMap({
+        nombre: "",
+        linea: "",
+        jungla: false
+      });
     } catch (error) {
+      console.error('Error en addMap:', error);
       setError(error.message || 'Error al agregar el mapa');
     }
   };
 
   const updateMap = async () => {
-    if (editIndex !== null && editMap._id) {
+    console.log('🔄 Iniciando updateMap con datos:', editMap);
+    try {
       const token = localStorage.getItem('token');
-      const mapToUpdate = {
-        nombre: editMap.nombre,
-        linea: parseInt(editMap.linea),
-        jungla: editMap.jungla
-      };
-
-      try {
-        const response = await fetch(`http://localhost:3000/api/mapas/${editMap._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify(mapToUpdate),
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          setError(errorData.error || 'Error al actualizar el mapa');
-          return;
-        }
-
-        const updatedMap = await response.json();
-        const updatedMaps = maps.map((map, index) =>
-          index === editIndex ? updatedMap : map
-        );
-        setMaps(updatedMaps);
-        setEditIndex(null);
-        setEditMap({});
-      } catch (error) {
-        setError(error.message || 'Error al actualizar el mapa');
+      if (!token) {
+        navigate('/login');
+        return;
       }
+
+      const response = await fetch(`http://localhost:3000/api/mapas/${editMap._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(editMap),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.error || 'Error al actualizar el mapa');
+        return;
+      }
+
+      const updatedMap = await response.json();
+      console.log('Mapa actualizado exitosamente:', updatedMap);
+      const updatedMaps = maps.map((map, index) =>
+        index === editIndex ? updatedMap : map
+      );
+      setMaps(updatedMaps);
+      setEditIndex(null);
+      setEditMap({});
+    } catch (error) {
+      console.error('Error en updateMap:', error);
+      setError(error.message || 'Error al actualizar el mapa');
     }
   };
 
   const deleteMap = async (id) => {
+    console.log(`🔄 Iniciando deleteMap para el ID: ${id}`);
     try {
       const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
       const response = await fetch(`http://localhost:3000/api/mapas/${id}`, {
         method: "DELETE",
         headers: {
@@ -135,6 +154,7 @@ const MapsCRUD = () => {
 
   const handleEditMapChange = (e) => {
     const { name, value, type, checked } = e.target;
+    console.log('Editando mapa:', { name, value, type, checked });
     setEditMap({
       ...editMap,
       [name]: type === 'checkbox' ? checked : value

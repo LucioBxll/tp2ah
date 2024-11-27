@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import M from 'materialize-css';
 
-export const Banner = ({ slides }) => {
-  const slide = slides[0];
-
+export const Banner = ({ slides = [{ title: 'Título por defecto', message: '' }] }) => {
   useEffect(() => {
     const elems = document.querySelectorAll('.parallax');
     M.Parallax.init(elems, {
@@ -19,47 +17,24 @@ export const Banner = ({ slides }) => {
     };
   }, []);
 
+  if (!slides?.length) {
+    return null;
+  }
+
+  const slide = slides[0];
+
   return (
-    <div className="parallax-container" style={{ height: '400px' }}>
+    <div className="parallax-container" style={{ height: '600px' }}>
       <div className="parallax">
         <img src={slide.image} alt="Banner" />
       </div>
-      <div className="container center-align" style={{ 
-        paddingTop: '100px',
-        background: 'radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%)',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <h2 className="amber-text accent-4" style={{ 
-          fontSize: '3rem',
-          lineHeight: '1',
-          textShadow: '1px 1px 1px rgba(0,0,0,0.432)'
-        }}>
-          Bienvenido a
-          <strong style={{ 
-            display: 'block',
-            fontSize: '5rem',
-            fontStyle: 'italic',
-            fontWeight: '900'
-          }}>
-            LEAGUE OF LEGENDS
-          </strong>
+      <div className="title-container valign-wrapper center-align bg">
+        <h2 className="title amber-text accent-4">
+          {slide.message.split('\n')[0]}<br/>
+          <strong>{slide.message.split('\n')[1]}</strong>
         </h2>
-        <div style={{ 
-          width: '150px',
-          height: '3px',
-          margin: '10px 0',
-          backgroundColor: 'rgba(223, 192, 17, 0.986)'
-        }}></div>
-        <div style={{ 
-          width: '75px',
-          height: '3px',
-          margin: '5px 0',
-          backgroundColor: 'rgba(223, 192, 17, 0.986)'
-        }}></div>
+        <div className="linea1"></div>
+        <div className="linea2"></div>
       </div>
     </div>
   );
@@ -68,6 +43,7 @@ export const Banner = ({ slides }) => {
 Banner.propTypes = {
   slides: PropTypes.arrayOf(
     PropTypes.shape({
+      title: PropTypes.string,
       message: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,

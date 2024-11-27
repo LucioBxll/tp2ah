@@ -3,14 +3,14 @@ import { validateChamp, validateUpdateChamp } from "../validations/validation.js
 
 export const obtenerTodosLosChamps = async (req, res) => {
     try {
-        const champs = await Champions.find();
-        res.json({
-            champs,
-            total: champs.length
-        });
+        const champs = await Champions.find().sort({ nombre: 1 });
+        res.json(champs);
     } catch (error) {
         console.error('Error al obtener campeones:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
+        res.status(500).json({ 
+            message: "Error al obtener los campeones",
+            error: error.message 
+        });
     }
 };
 

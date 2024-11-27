@@ -19,23 +19,43 @@ const ChampionsCRUD = () => {
 
   useEffect(() => {
     const fetchChampions = async () => {
+      console.log('🔄 Iniciando fetchChampions...');
       try {
         const token = localStorage.getItem('token');
         if (!token) {
+          console.log('❌ No se encontró token de autenticación');
           navigate('/login');
           return;
         }
 
+        console.log('📤 Realizando petición GET a /api/champions');
         const response = await fetch("http://localhost:3000/api/champions", {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         });
-        if (!response.ok) throw new Error('Error al cargar campeones');
+
+        if (!response.ok) {
+          console.error(`❌ Error en la respuesta: ${response.status} - ${response.statusText}`);
+          throw new Error('Error al obtener los campeones');
+        }
+
         const data = await response.json();
-        setChampions(data.champs);
+        console.log('✅ Datos recibidos:', data);
+        
+        if (data && data.champs) {
+          setChampions(data.champs);
+        } else if (Array.isArray(data)) {
+          setChampions(data);
+        } else {
+          console.error('❌ Formato de datos inesperado:', data);
+          setChampions([]);
+        }
       } catch (error) {
+        console.error('❌ Error en fetchChampions:', error.message);
         setError(error.message);
+        setChampions([]);
       }
     };
 
@@ -232,117 +252,123 @@ const ChampionsCRUD = () => {
         </div>
 
         <div className="champions-grid">
-          {champions.map((champ, index) => (
-            <div key={champ._id} className="champion-card">
-              <img
-                src={champ.imagen}
-                alt={champ.nombre}
-                className="champion-image"
-              />
-              <div className="champion-info">
-                <h3>{champ.nombre}</h3>
-                <p><strong>Origen:</strong> {champ.origen}</p>
-                <p><strong>Recurso:</strong> {champ.recurso}</p>
-                <p><strong>Roles:</strong> {champ.roles.join(", ")}</p>
-                <p><strong>Dificultad:</strong> {champ.dificultad_uso}</p>
-              </div>
-              <div className="champion-actions">
-                <button 
-                  onClick={() => {
-                    setEditIndex(index);
-                    setEditChampion({...champ});
-                  }}
-                  className="btn btn-edit"
-                >
-                  Editar
-                </button>
-                <button 
-                  onClick={() => updateChampion()}
-                  className="btn btn-save"
-                >
-                  Guardar
-                </button>
-                <button 
-                  onClick={() => deleteChampion(champ._id)}
-                  className="btn btn-delete"
-                >
-                  Eliminar
-                </button>
-              </div>
-              {editIndex === index && (
-                <div className="edit-form">
-                  <input
-                    type="text"
-                    name="nombre"
-                    value={editChampion.nombre}
-                    onChange={handleEditChampionChange}
-                    placeholder="Nombre del campeón"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="imagen"
-                    value={editChampion.imagen}
-                    onChange={handleEditChampionChange}
-                    placeholder="URL de la imagen"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="origen"
-                    value={editChampion.origen}
-                    onChange={handleEditChampionChange}
-                    placeholder="Origen"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="recurso"
-                    value={editChampion.recurso}
-                    onChange={handleEditChampionChange}
-                    placeholder="Recurso"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="lineas"
-                    value={editChampion.lineas ? editChampion.lineas.join(", ") : ""}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setEditChampion({
-                        ...editChampion,
-                        lineas: value.split(", ").filter(item => item)
-                      });
-                    }}
-                    placeholder="Líneas (separadas por comas)"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="roles"
-                    value={editChampion.roles ? editChampion.roles.join(", ") : ""}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setEditChampion({
-                        ...editChampion,
-                        roles: value.split(", ").filter(item => item)
-                      });
-                    }}
-                    placeholder="Roles (separados por comas)"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="dificultad_uso"
-                    value={editChampion.dificultad_uso}
-                    onChange={handleEditChampionChange}
-                    placeholder="Dificultad de uso"
-                    className="form-input"
-                  />
+          {Array.isArray(champions) && champions.length > 0 ? (
+            champions.map((champ, index) => (
+              <div key={champ._id || index} className="champion-card">
+                <img
+                  src={champ.imagen}
+                  alt={champ.nombre}
+                  className="champion-image"
+                />
+                <div className="champion-info">
+                  <h3>{champ.nombre}</h3>
+                  <p><strong>Origen:</strong> {champ.origen}</p>
+                  <p><strong>Recurso:</strong> {champ.recurso}</p>
+                  <p><strong>Roles:</strong> {champ.roles.join(", ")}</p>
+                  <p><strong>Dificultad:</strong> {champ.dificultad_uso}</p>
                 </div>
-              )}
+                <div className="champion-actions">
+                  <button 
+                    onClick={() => {
+                      setEditIndex(index);
+                      setEditChampion({...champ});
+                    }}
+                    className="btn btn-edit"
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    onClick={() => updateChampion()}
+                    className="btn btn-save"
+                  >
+                    Guardar
+                  </button>
+                  <button 
+                    onClick={() => deleteChampion(champ._id)}
+                    className="btn btn-delete"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+                {editIndex === index && (
+                  <div className="edit-form">
+                    <input
+                      type="text"
+                      name="nombre"
+                      value={editChampion.nombre}
+                      onChange={handleEditChampionChange}
+                      placeholder="Nombre del campeón"
+                      className="form-input"
+                    />
+                    <input
+                      type="text"
+                      name="imagen"
+                      value={editChampion.imagen}
+                      onChange={handleEditChampionChange}
+                      placeholder="URL de la imagen"
+                      className="form-input"
+                    />
+                    <input
+                      type="text"
+                      name="origen"
+                      value={editChampion.origen}
+                      onChange={handleEditChampionChange}
+                      placeholder="Origen"
+                      className="form-input"
+                    />
+                    <input
+                      type="text"
+                      name="recurso"
+                      value={editChampion.recurso}
+                      onChange={handleEditChampionChange}
+                      placeholder="Recurso"
+                      className="form-input"
+                    />
+                    <input
+                      type="text"
+                      name="lineas"
+                      value={editChampion.lineas ? editChampion.lineas.join(", ") : ""}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setEditChampion({
+                          ...editChampion,
+                          lineas: value.split(", ").filter(item => item)
+                        });
+                      }}
+                      placeholder="Líneas (separadas por comas)"
+                      className="form-input"
+                    />
+                    <input
+                      type="text"
+                      name="roles"
+                      value={editChampion.roles ? editChampion.roles.join(", ") : ""}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setEditChampion({
+                          ...editChampion,
+                          roles: value.split(", ").filter(item => item)
+                        });
+                      }}
+                      placeholder="Roles (separados por comas)"
+                      className="form-input"
+                    />
+                    <input
+                      type="text"
+                      name="dificultad_uso"
+                      value={editChampion.dificultad_uso}
+                      onChange={handleEditChampionChange}
+                      placeholder="Dificultad de uso"
+                      className="form-input"
+                    />
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <div className="no-champions">
+              <p>No hay campeones disponibles</p>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
