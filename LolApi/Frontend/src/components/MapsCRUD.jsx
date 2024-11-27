@@ -205,9 +205,9 @@ const MapsCRUD = () => {
           {maps.map((map, index) => (
             <div key={map._id} className="champion-card">
               <div className="champion-info">
-                <h3>{map?.nombre || 'Sin nombre'}</h3>
-                <p><strong>Líneas:</strong> {map?.linea || '0'}</p>
-                <p><strong>Jungla:</strong> {map?.jungla ? 'Sí' : 'No'}</p>
+                <h3>{map.nombre || map.name || 'Sin nombre'}</h3>
+                <p><strong>Líneas:</strong> {map.linea || '0'}</p>
+                <p><strong>Jungla:</strong> {map.jungla ? 'Sí' : 'No'}</p>
               </div>
               <div className="champion-actions">
                 <button

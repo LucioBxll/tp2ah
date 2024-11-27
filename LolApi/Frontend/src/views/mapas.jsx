@@ -87,8 +87,8 @@ export function Mapas() {
               maps.map((map) => (
                 <div className="col s12 m6 l4" key={map._id}>
                   <MapCardComponent
-                    name={map.name}
-                    lineas={String(map.lineas)}
+                    name={map.nombre || map.name || 'Sin nombre'}
+                    lineas={String(map.linea)}
                     jungla={map.jungla}
                   />
                 </div>

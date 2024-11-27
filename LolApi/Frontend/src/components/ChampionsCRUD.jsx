@@ -64,7 +64,7 @@ const ChampionsCRUD = () => {
 
   const addChampion = async () => {
     try {
-      if (newChampion.nombre) {
+      if (newChampion.nombre && newChampion.imagen) {
         const token = localStorage.getItem('token');
         const response = await fetch("http://localhost:3000/api/champions", {
           method: "POST",

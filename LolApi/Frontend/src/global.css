@@ -779,3 +779,61 @@ input:-webkit-autofill:active {
 .preloader-wrapper .spinner-amber-only {
   border-color: #ffc107;
 }
+
+/* tp2ah/LolApi/Frontend/src/components/register.css */
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: rgba(24, 1, 24, 0.9); /* Color de fondo acorde al tema */
+}
+
+.register-form {
+  background-color: rgba(40, 40, 40, 0.9); /* Fondo del formulario */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px; /* Ancho máximo del formulario */
+  width: 100%; /* Ancho completo */
+  color: #e6e6e6; /* Color del texto */
+}
+
+.form-group {
+  margin-bottom: 1rem; /* Espaciado entre los grupos de formulario */
+}
+
+.form-input {
+  width: 100%; /* Ancho completo */
+  padding: 0.5rem; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  border: 1px solid rgba(255, 171, 0, 0.5); /* Borde acorde al tema */
+  background-color: rgba(60, 60, 60, 0.8); /* Fondo del input */
+  color: #e6e6e6; /* Color del texto del input */
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Color del placeholder */
+}
+
+.submit-button {
+  background-color: rgba(255, 171, 0, 0.9); /* Color de fondo del botón */
+  color: #1a1a1a; /* Color del texto */
+  padding: 0.5rem 1rem; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  width: 100%; /* Ancho completo */
+  transition: background-color 0.3s; /* Transición suave */
+}
+
+.submit-button:hover {
+  background-color: rgba(255, 171, 0, 1); /* Color de fondo al pasar el mouse */
+}
+
+.error-message {
+  color: #dc3545; /* Color del mensaje de error */
+  margin-top: 1rem; /* Espaciado superior */
+  text-align: center; /* Centrar el texto */
+}
