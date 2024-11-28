@@ -4,8 +4,6 @@
 <div align="center">
 
 
-![League of Legends Logo](./Frontend/src/assets/logo.png)
-
 
 Una aplicación web que permite explorar y gestionar información sobre League of Legends, incluyendo campeones y mapas.
 
