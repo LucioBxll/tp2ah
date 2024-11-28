@@ -1,119 +1,159 @@
-lol_react
-Aplicación web móvil creada con React y conectada a una API REST. Esta aplicación permite a los usuarios registrarse, iniciar sesión y explorar información sobre campeones y mapas del juego.
-
-Características
-Registro de Usuario: Los usuarios pueden registrarse proporcionando un nombre de usuario y una contraseña.
-Inicio de Sesión: Los usuarios pueden iniciar sesión con sus credenciales.
-Lista de Campeones: Muestra una lista de campeones con detalles como origen, línea, rol, recurso y dificultad.
-Lista de Mapas: Muestra una lista de mapas con detalles como líneas y si tiene jungla.
-Navegación: Navegación sencilla entre las diferentes secciones de la aplicación utilizando React Router.
-Estructura del Proyecto
+# 🎮 League of Legends API Explorer
 
 
-lol_react/
-├── Api_lol_react/
-
-│   ├── src/
-
-│   │   ├── components/
-
-│   │   │   ├── Banner.jsx
-
-│   │   │   ├── LoginForm.jsx
-
-│   │   │   ├── MapCard.jsx
-
-│   │   │   ├── NavBar.jsx
-
-│   │   │   ├── RegistroForm.jsx
-
-│   │   │   └── LolChampCard.jsx
-
-│   │   ├── views/
-
-│   │   │   ├── campeones.jsx
-
-│   │   │   ├── inicio.jsx
-
-│   │   │   ├── mapas.jsx
-
-│   │   │   ├── iniciarSesion.jsx
-
-│   │   │   └── registrar.jsx
-
-│   │   ├── App.jsx
-
-│   │   ├── main.jsx
-
-│   │   └── index.scss
-
-│   ├── public/
-
-│   ├── package.json
-
-│   └── README.md
-
-└── README.md
+<div align="center">
 
 
-Instalación
-Clona el repositorio:
+![League of Legends Logo](./Frontend/src/assets/logo.png)
 
-git clone https://github.com/tu_usuario/lol_react.git
-cd lol_react/Api_lol_react
-Instala las dependencias:
 
+Una aplicación web que permite explorar y gestionar información sobre League of Legends, incluyendo campeones y mapas.
+
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+
+
+</div>
+
+
+## 📋 Descripción
+
+
+Esta aplicación proporciona una interfaz intuitiva para explorar el universo de League of Legends. Los usuarios pueden:
+
+
+- Ver información detallada de campeones
+- Explorar los diferentes mapas del juego
+- Gestionar contenido (para usuarios autenticados)
+- Realizar búsquedas y filtrar información
+
+
+## ✨ Características Principales
+
+
+### 🦸 Sección de Campeones
+- Listado completo de campeones
+- Información detallada incluyendo:
+  - Origen
+  - Roles
+  - Líneas de juego
+  - Dificultad de uso
+  - Recursos utilizados
+- Búsqueda y filtrado de campeones
+- Paginación para mejor navegación
+
+
+### 🗺️ Sección de Mapas
+- Visualización de mapas disponibles
+- Detalles de cada mapa:
+  - Número de líneas
+  - Presencia de jungla
+ 
+
+
+### 👤 Sistema de Usuarios
+- Registro de nuevos usuarios
+- Inicio de sesión
+- Panel de administración para usuarios autorizados
+
+
+
+
+## 🚀 Cómo Empezar
+
+
+### Prerrequisitos
+- Node.js (v14 o superior)
+- MongoDB
+- npm o yarn
+
+
+### Instalación
+
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/LucioBxll/LolApi.git
+cd LolApi
+```
+
+
+2. **Configurar el Frontend**
+```bash
+cd Frontend
 npm install
-Asegúrate de que tu API esté en funcionamiento en http://localhost:3000.
+```
 
-Ejecución
-Para iniciar la aplicación, ejecuta el siguiente comando:
 
+3. **Configurar el Backend**
+```bash
+cd Backend
+npm install
+```
+
+
+4. **Iniciar la aplicación**
+```bash
+# Terminal 1 - Frontend
+cd Frontend
 npm run dev
-Esto iniciará la aplicación en modo de desarrollo. Abre tu navegador y ve a http://localhost:5173 para ver la aplicación en acción.
 
-Uso
-Registro: Ve a la página de registro para crear una nueva cuenta.
-Inicio de Sesión: Accede a tu cuenta existente desde la página de inicio de sesión.
-Explorar Campeones: Navega a la sección de campeones para ver la lista de campeones disponibles.
-Explorar Mapas: Navega a la sección de mapas para ver la lista de mapas disponibles.
-Contribuciones
-Las contribuciones son bienvenidas. Si deseas contribuir, por favor abre un issue o envía un pull request.
 
-Licencia
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
-
-BACKEND
-Tecnologías Utilizadas
-Frontend: HTML, CSS, JavaScript
-Backend: Node.js, Express
-Base de Datos: MongoDB, Mongoose
-Estructura del Proyecto
-El proyecto está organizado en las siguientes carpetas:
-
-public/: Contiene los archivos estáticos del frontend, incluyendo HTML, CSS y JavaScript.
-models/: Contiene los modelos de Mongoose para interactuar con la base de datos.
-node_api/: Contiene la lógica del servidor y las rutas de la API.
-README.md: Este archivo, que proporciona información sobre el proyecto.
-Instalación
-Para instalar y ejecutar el proyecto, sigue estos pasos:
-
-Clona el repositorio:
-
-git clone https://github.com/LucioBxll/backend.git
-
-cd backend.git
-Instala las dependencias:
-
-npm install
-Configura la base de datos MongoDB. Asegúrate de tener MongoDB en funcionamiento y actualiza la cadena de conexión en el archivo de configuración.
-
-Inicia el servidor:
-
+# Terminal 2 - Backend
+cd Backend
 npm start
-Abre tu navegador y visita http://localhost:3000 para ver la aplicación en funcionamiento.
+```
 
-Funcionalidades
-Visualización de Campeones: Los usuarios pueden ver una lista de campeones con su información básica.
-Detalles del Campeón: Al hacer clic en un campeón, se muestra información detallada sobre él.
-Filtrado de Campeones: Los usuarios pueden filtrar campeones según diferentes criterios.
+
+## 💻 Uso
+
+
+### Navegación General
+- La página de inicio presenta una descripción general y enlaces principales
+- Barra de navegación para acceder a todas las secciones
+- Diseño responsive para todos los dispositivos
+
+
+### Exploración de Campeones
+1. Accede a la sección "Campeones"
+2. Utiliza el buscador para filtrar por nombre
+3. Navega entre páginas usando la paginación
+4. Haz clic en un campeón para ver detalles
+
+
+### Gestión de Contenido (Usuarios Autenticados)
+1. Inicia sesión con tus credenciales
+2. Accede al panel de administración
+3. Añade, edita o elimina contenido según necesites
+
+
+## 🛠️ Tecnologías Utilizadas
+
+
+### Frontend
+- React 18
+- React Router para navegación
+- MaterializeCSS para estilos
+- Axios para peticiones HTTP
+
+
+### Backend
+- Node.js con Express
+- MongoDB con Mongoose
+- JWT para autenticación
+- Bcrypt para encriptación
+
+
+## 👥 Equipo
+
+
+- **Lucio Boxall** - *Desarrollo Web* - [LucioBxll](https://github.com/LucioBxll)
+- **German Maritini** - *Desarrollo Web* - [germanmartini216](https://github.com/germanmartini216)
+
+
+
+
+
