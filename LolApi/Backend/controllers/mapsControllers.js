@@ -27,8 +27,8 @@ export const obtenerMapaPorId = async (req, res) => {
 
 export const crearMapa = async (req, res) => {
     try {
-        const { nombre, linea, jungla } = req.body;
-        const nuevoMapa = new Maps({ nombre, linea, jungla });
+        const { nombre, lineas, jungla } = req.body;
+        const nuevoMapa = new Maps({ nombre, lineas, jungla });
         await nuevoMapa.save();
         res.status(201).json(nuevoMapa);
     } catch (error) {
@@ -39,10 +39,10 @@ export const crearMapa = async (req, res) => {
 
 export const actualizarMapa = async (req, res) => {
     try {
-        const { nombre, linea, jungla } = req.body;
+        const { nombre, lineas, jungla } = req.body;
         const mapaActualizado = await Maps.findByIdAndUpdate(
             req.params.id,
-            { nombre, linea, jungla },
+            { nombre, lineas, jungla },
             { new: true }
         );
         if (mapaActualizado) {

@@ -1,21 +1,11 @@
 import ChampionsCRUD from '../components/ChampionsCRUD';
-import { Banner } from '../components/banner';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import championsBg from '../assets/champions-bg.jpg';
 
 const ChampionsPage = () => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-
-    const slides = [
-        {
-            message: "Gestión de\nCAMPEONES",
-            type: "main",
-            image: championsBg
-        }
-    ];
 
     useEffect(() => {
         const verifyAuth = async () => {
@@ -65,15 +55,14 @@ const ChampionsPage = () => {
     }
 
     return (
-        <div className="page-container">
-            <Banner slides={slides} style={{ width: '100vw' }} />
-            <div className="container">
-                <section className="section">
-                    <main className="page-content crud-content">
-                        <ChampionsCRUD />
-                    </main>
-                </section>
-            </div>
+        <div className="page-container crud-page">
+            <header className="page-header crud-header">
+                <h1 className="crud-title">Gestión de Campeones</h1>
+                <p className="crud-subtitle">League of Legends</p>
+            </header>
+            <main className="page-content crud-content">
+                <ChampionsCRUD />
+            </main>
         </div>
     );
 };

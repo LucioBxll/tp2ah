@@ -6,7 +6,7 @@ const MapsCRUD = () => {
   const [maps, setMaps] = useState([]);
   const [newMap, setNewMap] = useState({
     nombre: "",
-    linea: "",
+    lineas: "",
     jungla: false
   });
   const [editIndex, setEditIndex] = useState(null);
@@ -78,7 +78,7 @@ const MapsCRUD = () => {
       setMaps([...maps, addedMap]);
       setNewMap({
         nombre: "",
-        linea: "",
+        lineas: "",
         jungla: false
       });
     } catch (error) {
@@ -178,9 +178,9 @@ const MapsCRUD = () => {
             />
             <input
               type="number"
-              name="linea"
-              value={newMap.linea}
-              onChange={(e) => setNewMap({ ...newMap, linea: e.target.value })}
+              name="lineas"
+              value={newMap.lineas}
+              onChange={(e) => setNewMap({ ...newMap, lineas: e.target.value })}
               placeholder="Número de líneas"
               className="form-input"
             />
@@ -206,7 +206,7 @@ const MapsCRUD = () => {
             <div key={map._id} className="champion-card">
               <div className="champion-info">
                 <h3>{map.nombre || map.name || 'Sin nombre'}</h3>
-                <p><strong>Líneas:</strong> {map.linea || '0'}</p>
+                <p><strong>Líneas:</strong> {map.lineas || '0'}</p>
                 <p><strong>Jungla:</strong> {map.jungla ? 'Sí' : 'No'}</p>
               </div>
               <div className="champion-actions">
@@ -238,8 +238,8 @@ const MapsCRUD = () => {
                   />
                   <input
                     type="number"
-                    name="linea"
-                    value={editMap.linea || ''}
+                    name="lineas"
+                    value={editMap.lineas || ''}
                     onChange={handleEditMapChange}
                     placeholder="Número de líneas"
                     className="form-input"

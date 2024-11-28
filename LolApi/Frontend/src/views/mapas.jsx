@@ -83,12 +83,12 @@ export function Mapas() {
       <div className="container">
         <section className="section">
           <div className="row">
-            {maps && maps.length > 0 ? (
+            {maps.length > 0 ? (
               maps.map((map) => (
                 <div className="col s12 m6 l4" key={map._id}>
                   <MapCardComponent
                     name={map.nombre || map.name || 'Sin nombre'}
-                    lineas={String(map.linea)}
+                    lineas={map.lineas}
                     jungla={map.jungla}
                   />
                 </div>

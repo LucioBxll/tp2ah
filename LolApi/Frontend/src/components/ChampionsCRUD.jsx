@@ -162,7 +162,6 @@ const ChampionsCRUD = () => {
   return (
     <div className="container">
       <div className="crud-container">
-        <h2 className="title">Gestión de Campeones</h2>
         
         {error && <div className="error-message">{error}</div>}
 
@@ -246,7 +245,7 @@ const ChampionsCRUD = () => {
               className="form-input"
             />
           </div>
-          <button onClick={addChampion} className="btn btn-primary">
+          <button onClick={addChampion} className="waves-effect waves-light btn amber">
             Agregar Campeón
           </button>
         </div>
@@ -273,19 +272,19 @@ const ChampionsCRUD = () => {
                       setEditIndex(index);
                       setEditChampion({...champ});
                     }}
-                    className="btn btn-edit"
+                    className="waves-effect waves-light btn blue"
                   >
                     Editar
                   </button>
                   <button 
                     onClick={() => updateChampion()}
-                    className="btn btn-save"
+                    className="waves-effect waves-light btn green"
                   >
                     Guardar
                   </button>
                   <button 
                     onClick={() => deleteChampion(champ._id)}
-                    className="btn btn-delete"
+                    className="waves-effect waves-light btn red"
                   >
                     Eliminar
                   </button>

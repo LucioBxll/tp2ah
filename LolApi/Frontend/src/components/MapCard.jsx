@@ -24,6 +24,6 @@ export function MapCardComponent({
 
 MapCardComponent.propTypes = {
   name: PropTypes.string,
-  lineas: PropTypes.string,
+  lineas: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   jungla: PropTypes.bool
 };

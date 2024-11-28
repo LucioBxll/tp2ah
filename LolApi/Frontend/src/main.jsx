@@ -13,11 +13,13 @@ import { Campeones } from "./views/campeones.jsx";
 import { Mapas } from "./views/mapas.jsx";
 import LoginForm from "./components/login.jsx";
 import RegisterForm from "./components/register.jsx";
-import ChampionsCRUD from './components/ChampionsCRUD.jsx';
 import MapsPage from './views/MapsPage';
+import ChampionsPage from './views/ChampionsPage';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
 import './global.css';
+// eslint-disable-next-line no-unused-vars
+import ChampionsCRUD from './components/ChampionsCRUD.jsx';
 
 console.log('🔄 Iniciando configuración del router...');
 
@@ -30,7 +32,7 @@ const routes = createRoutesFromElements(
     <Route path="mapas" element={<Mapas />} />
     <Route path="login" element={<LoginForm />} />
     <Route path="registro" element={<RegisterForm />} />
-    <Route path="crud-campeones" element={<ChampionsCRUD />} />
+    <Route path="crud-campeones" element={<ChampionsPage />} />
     <Route path="crud-mapas" element={<MapsPage />} />
     <Route path="*" element={<Navigate to="/inicio" replace />} />
   </Route>
