@@ -19,6 +19,7 @@ export function Campeones() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [showFavorites, setShowFavorites] = useState(false);
   const limit = 20;
 
   const slides = [
@@ -62,20 +63,43 @@ export function Campeones() {
   }, []);
 
   useEffect(() => {
-    const filteredChamps = allChampions.filter(champ => 
-      champ.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const getFavoriteChampions = () => {
+      const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+      return allChampions.filter(champ => favoritos.includes(champ.nombre));
+    };
+
+    const filteredChamps = showFavorites 
+      ? getFavoriteChampions()
+      : allChampions.filter(champ => 
+          champ.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
     setTotalPages(Math.ceil(filteredChamps.length / limit));
-
     const startIndex = (currentPage - 1) * limit;
     const endIndex = startIndex + limit;
     setDisplayedChampions(filteredChamps.slice(startIndex, endIndex));
-  }, [allChampions, searchTerm, currentPage]);
+  }, [allChampions, searchTerm, currentPage, showFavorites, limit]);
 
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm]);
+
+  const handleFavoriteToggle = (nombre) => {
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    const updatedFavorites = favoritos.includes(nombre)
+      ? favoritos.filter(fav => fav !== nombre)
+      : [...favoritos, nombre];
+    
+    localStorage.setItem('favoritos', JSON.stringify(updatedFavorites));
+    
+    if (showFavorites) {
+      const newFilteredChamps = allChampions.filter(champ => 
+        updatedFavorites.includes(champ.nombre)
+      );
+      setDisplayedChampions(newFilteredChamps.slice(0, limit));
+      setTotalPages(Math.ceil(newFilteredChamps.length / limit));
+    }
+  };
 
   const Pagination = () => {
     if (totalPages <= 1) return null;
@@ -152,21 +176,39 @@ export function Campeones() {
         <section className="section">
           <div className="row">
             <div className="col s12 m8 offset-m2 l6 offset-l3">
-              <div className="search-wrapper">
-                <div className="input-field">
-                  <svg className="search-icon" viewBox="0 0 24 24">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                  </svg>
-                  <input
-                    id="search"
-                    type="text"
-                    className="search-input"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar campeones..."
+              <div className="switch center-align" style={{ marginBottom: '20px' }}>
+                <label>
+                  Todos los campeones
+                  <input 
+                    type="checkbox" 
+                    checked={showFavorites}
+                    onChange={(e) => {
+                      setShowFavorites(e.target.checked);
+                      setCurrentPage(1);
+                    }}
                   />
-                </div>
+                  <span className="lever"></span>
+                  Favoritos
+                </label>
               </div>
+              
+              {!showFavorites && (
+                <div className="search-wrapper">
+                  <div className="input-field">
+                    <svg className="search-icon" viewBox="0 0 24 24">
+                      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                    <input
+                      id="search"
+                      type="text"
+                      className="search-input"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      placeholder="Buscar campeones..."
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -198,6 +240,7 @@ export function Campeones() {
                     roles={champ.roles ? champ.roles.join(", ") : 'No disponible'}
                     recurso={champ.recurso || 'No disponible'}
                     dificultad_uso={champ.dificultad_uso || 'No disponible'}
+                    onFavoriteToggle={handleFavoriteToggle}
                   />
                 </div>
               ))
