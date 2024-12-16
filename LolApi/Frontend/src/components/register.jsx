@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 const Register = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -33,35 +32,33 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <form onSubmit={handleRegister} className="register-form">
-        <h2>Registro de Usuario</h2>
-        <div className="form-group">
-          <label htmlFor="register-username">Usuario</label>
+    <div className="container">
+      <h2 className="amber-text accent-4">Registrar Usuario</h2>
+      <form onSubmit={handleRegister}>
+        <div className="input-field">
           <input
             type="text"
-            id="register-username"
+            id="username"
             value={userData.username}
             onChange={(e) => setUserData({ ...userData, username: e.target.value })}
-            autoComplete="username"
-            className="form-input"
+            className="white-text"
           />
+          <label htmlFor="username">Usuario</label>
         </div>
-        <div className="form-group">
-          <label htmlFor="register-password">Contraseña</label>
+        <div className="input-field">
           <input
             type="password"
-            id="register-password"
+            id="password"
             value={userData.password}
             onChange={(e) => setUserData({ ...userData, password: e.target.value })}
-            autoComplete="new-password"
-            className="form-input"
+            className="white-text"
           />
+          <label htmlFor="password">Contraseña</label>
         </div>
-        <button type="submit" className="submit-button">
+        {error && <div className="red-text">{error}</div>}
+        <button className="btn waves-effect waves-light amber accent-4" type="submit">
           Registrarse
         </button>
-        {error && <p className="error-message">{error}</p>}
       </form>
     </div>
   );

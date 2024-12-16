@@ -74,6 +74,7 @@ strong {
   background-color: #ffab00 !important;
   border-bottom: 1px solid #ffab00 !important;
   font-size: 18px !important;
+  color: black !important;
 }
 
 .collapsible {
@@ -86,6 +87,7 @@ strong {
 .collapsible-body {
   border-bottom: 1px solid #ffab00;
   font-size: 18px !important;
+  color: black !important;
 }
 
 /* Estilos del Footer */
@@ -592,6 +594,11 @@ input:-webkit-autofill:active {
 
 .pagination li.active {
   background-color: #ffc107 !important;
+  color: black !important;
+}
+
+.pagination li.active a {
+  color: black !important;
 }
 
 .pagination li.disabled a {
@@ -675,6 +682,7 @@ input:-webkit-autofill:active {
 
 .pagination li.active {
   background-color: #ffc107 !important;
+  color: black !important;
 }
 
 .pagination li.disabled {
@@ -737,18 +745,19 @@ input:-webkit-autofill:active {
 }
 
 .submit-button {
-  background-color: rgba(255, 171, 0, 0.9); /* Color de fondo del botón */
-  color: #1a1a1a; /* Color del texto */
-  padding: 0.5rem 1rem; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse */
-  width: 100%; /* Ancho completo */
-  transition: background-color 0.3s; /* Transición suave */
+  background-color: rgba(255, 171, 0, 0.9);
+  color: black !important;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-  background-color: rgba(255, 171, 0, 1); /* Color de fondo al pasar el mouse */
+  background-color: rgba(255, 171, 0, 1);
+  color: black !important;
 }
 
 .error-message {
@@ -775,4 +784,30 @@ input:-webkit-autofill:active {
 
 .crud-edit-form {
     padding: 15px;
+}
+
+/* Estilos para el switch de favoritos */
+.switch label {
+  font-size: 1.2rem !important;
+  color: white !important;
+}
+
+/* Color del switch cuando está apagado */
+.switch label .lever {
+  background-color: #424242 !important;
+}
+
+/* Color del círculo del switch cuando está apagado */
+.switch label .lever:after {
+  background-color: #f5f5f5 !important;
+}
+
+/* Color del switch cuando está encendido */
+.switch label input[type=checkbox]:checked + .lever {
+  background-color: #ffab00 !important;
+}
+
+/* Color del círculo del switch cuando está encendido */
+.switch label input[type=checkbox]:checked + .lever:after {
+  background-color: #ffab00 !important;
 }

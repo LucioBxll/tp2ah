@@ -45,18 +45,18 @@ export function Inicio() {
           <h3 className="amber-text accent-4">Endpoints de la API</h3>
           <ul className="collapsible amber accent-4">
             <li>
-              <div className="collapsible-header white-text" style={{ fontSize: '18px' }}>
+              <div className="collapsible-header black-text" style={{ fontSize: '18px' }}>
                 Rutas para navegar por la API de Campeones
               </div>
               <div className="collapsible-body">
                 <table className="striped responsive-table">
                   <thead>
                     <tr>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Rutas</th>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Descripción</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Rutas</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Descripción</th>
                     </tr>
                   </thead>
-                  <tbody className="white-text" style={{ fontSize: '18px' }}>
+                  <tbody className="black-text" style={{ fontSize: '18px' }}>
                     <tr>
                       <td>/api/champions</td>
                       <td>Obtiene todos los campeones</td>
@@ -98,18 +98,18 @@ export function Inicio() {
               </div>
             </li>
             <li>
-              <div className="collapsible-header white-text" style={{ fontSize: '18px' }}>
+              <div className="collapsible-header black-text" style={{ fontSize: '18px' }}>
                 Rutas para editar la API
               </div>
               <div className="collapsible-body">
                 <table className="striped responsive-table">
                   <thead>
                     <tr>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Rutas</th>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Descripción</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Rutas</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Descripción</th>
                     </tr>
                   </thead>
-                  <tbody className="white-text" style={{ fontSize: '18px' }}>
+                  <tbody className="black-text" style={{ fontSize: '18px' }}>
                     <tr>
                       <td>/api/champions</td>
                       <td>Crea un nuevo campeón (POST)</td>
@@ -127,18 +127,18 @@ export function Inicio() {
               </div>
             </li>
             <li>
-              <div className="collapsible-header white-text" style={{ fontSize: '18px' }}>
+              <div className="collapsible-header black-text" style={{ fontSize: '18px' }}>
                 Rutas para Mapas
               </div>
               <div className="collapsible-body">
                 <table className="striped responsive-table">
                   <thead>
                     <tr>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Rutas</th>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Descripción</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Rutas</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Descripción</th>
                     </tr>
                   </thead>
-                  <tbody className="white-text" style={{ fontSize: '18px' }}>
+                  <tbody className="black-text" style={{ fontSize: '18px' }}>
                     <tr>
                       <td>/api/maps</td>
                       <td>Obtiene todos los mapas (GET)</td>
@@ -164,18 +164,18 @@ export function Inicio() {
               </div>
             </li>
             <li>
-              <div className="collapsible-header white-text" style={{ fontSize: '18px' }}>
+              <div className="collapsible-header black-text" style={{ fontSize: '18px' }}>
                 Rutas para Usuarios
               </div>
               <div className="collapsible-body">
                 <table className="striped responsive-table">
                   <thead>
                     <tr>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Rutas</th>
-                      <th className="white-text" style={{ fontSize: '18px' }}>Descripción</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Rutas</th>
+                      <th className="black-text" style={{ fontSize: '18px' }}>Descripción</th>
                     </tr>
                   </thead>
-                  <tbody className="white-text" style={{ fontSize: '18px' }}>
+                  <tbody className="black-text" style={{ fontSize: '18px' }}>
                     <tr>
                       <td>/api/users/registro</td>
                       <td>Registra un nuevo usuario (POST)</td>

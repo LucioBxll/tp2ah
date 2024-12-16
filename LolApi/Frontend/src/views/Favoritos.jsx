@@ -28,7 +28,6 @@ export function Favoritos() {
               key={nombre}
               nombre={nombre}
               onFavoriteToggle={handleFavoriteToggle}
-              // Aquí deberías pasar otros props necesarios, como imagen, origen, etc.
             />
           ))
         ) : (
