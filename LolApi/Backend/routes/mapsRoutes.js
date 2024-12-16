@@ -1,5 +1,6 @@
 import express from "express";
 import { obtenerTodosLosMapas, obtenerMapaPorId, crearMapa, actualizarMapa, eliminarMapa } from "../controllers/mapsControllers.js";
+import { checkRole } from '../middleware/checkRole.js';
 
 const router = express.Router();
 
@@ -7,10 +8,10 @@ router.get('/', obtenerTodosLosMapas);
 
 router.get('/:id', obtenerMapaPorId);
 
-router.post('/', crearMapa);
+router.post('/', checkRole('admin'), crearMapa);
 
-router.put('/:id', actualizarMapa);
+router.put('/:id', checkRole('admin'), actualizarMapa);
 
-router.delete('/:id', eliminarMapa);
+router.delete('/:id', checkRole('admin'), eliminarMapa);
 
 export default router;

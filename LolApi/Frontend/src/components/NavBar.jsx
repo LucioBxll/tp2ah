@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/lol-logo.png';
+import { useUser } from '../context/UserContext';
 
 export function NavBar() {
-  const isLoggedIn = localStorage.getItem('token');
+  const { user, logout, isAdmin } = useUser();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    logout();
     window.location.reload();
   };
 
@@ -20,10 +21,14 @@ export function NavBar() {
           <li><Link to="/campeones">Campeones</Link></li>
           <li><Link to="/mapas">Mapas</Link></li>
           
-          {isLoggedIn ? (
+          {user ? (
             <>
-              <li><Link to="/crud-campeones">Gestión de Campeones</Link></li>
-              <li><Link to="/crud-mapas">Gestión de Mapas</Link></li>
+              {isAdmin() && (
+                <>
+                  <li><Link to="/crud-campeones">Gestión de Campeones</Link></li>
+                  <li><Link to="/crud-mapas">Gestión de Mapas</Link></li>
+                </>
+              )}
               <li><a onClick={handleLogout} style={{cursor: 'pointer'}}>Cerrar Sesión</a></li>
             </>
           ) : (

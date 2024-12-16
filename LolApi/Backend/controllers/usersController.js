@@ -68,36 +68,52 @@ const crearUsuario = async (req, res) => {
 const iniciarSesion = async (req, res) => {
     try {
         const { username, password } = req.body;
-        
-        // Buscar usuario
-        const usuario = await usersModel.findOne({ username });
-        if (!usuario) {
-            return res.status(401).json({ mensaje: "Credenciales incorrectas" });
+
+        if (!username || !password) {
+            return res.status(400).json({ 
+                mensaje: "Usuario y contraseña son requeridos" 
+            });
         }
 
-        // Verificar contraseña
+        const usuario = await usersModel.findOne({ username });
+        
+        if (!usuario) {
+            return res.status(400).json({ 
+                mensaje: "Usuario no encontrado" 
+            });
+        }
+
         const passwordValido = await bcrypt.compare(password, usuario.password);
         if (!passwordValido) {
-            return res.status(401).json({ mensaje: "Credenciales incorrectas" });
+            return res.status(400).json({ 
+                mensaje: "Contraseña incorrecta" 
+            });
         }
 
-        // Generar token
+        // Asegurarse de que el usuario tenga un rol
+        const role = usuario.role || 'user';
+
         const token = jwt.sign(
-            { id: usuario._id, username: usuario.username },
+            { 
+                id: usuario._id, 
+                username: usuario.username,
+                role 
+            }, 
             process.env.SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: '24h' }
         );
 
         res.json({ 
-            mensaje: "Inicio de sesión exitoso",
-            token,
-            usuario: {
-                id: usuario._id,
-                username: usuario.username
-            }
+            token, 
+            role,
+            mensaje: "Inicio de sesión exitoso" 
         });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        console.error('Error en inicio de sesión:', error);
+        res.status(500).json({ 
+            mensaje: "Error en el servidor", 
+            error: error.message 
+        });
     }
 };
 
@@ -132,11 +148,36 @@ const eliminarUsuario = async (req, res) => {
     }
 };
 
+const crearAdmin = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        
+        const salt = await bcrypt.genSalt(10);
+        const passwordEncriptado = await bcrypt.hash(password, salt);
+
+        const nuevoAdmin = new usersModel({ 
+            username, 
+            password: passwordEncriptado,
+            role: 'admin'
+        });
+        
+        await nuevoAdmin.save();
+        
+        res.status(201).json({ 
+            mensaje: "Admin creado exitosamente",
+            username: nuevoAdmin.username
+        });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 export {
     obtenerTodosLosUsuarios,
     obtenerUsuarioPorId,
     crearUsuario,
     iniciarSesion,
     actualizarUsuario,
-    eliminarUsuario
+    eliminarUsuario,
+    crearAdmin
 };
