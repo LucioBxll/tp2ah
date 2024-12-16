@@ -62,5 +62,5 @@ LolChampCardComponent.propTypes = {
   roles: PropTypes.string,
   recurso: PropTypes.string,
   dificultad_uso: PropTypes.string,
-  onFavoriteToggle: PropTypes.func, // Nueva prop para manejar el favorito
+  onFavoriteToggle: PropTypes.func,
 };

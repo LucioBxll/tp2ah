@@ -27,40 +27,47 @@ export default function LoginForm() {
                 setError('Respuesta inválida del servidor');
             }
         } catch (error) {
-            console.error('Error completo:', error);
             setError(error.response?.data?.mensaje || 'Error al iniciar sesión');
         }
     };
 
     return (
         <div className="container">
-            <h2 className="amber-text accent-4">Iniciar Sesión</h2>
-            <form onSubmit={handleLogin}>
-                <div className="input-field">
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="white-text"
-                    />
-                    <label htmlFor="username">Usuario</label>
+            <div className="row">
+                <div className="col s12 m8 offset-m2 l6 offset-l3">
+                    <div className="card-panel" style={{ background: 'rgba(0,0,0,0.5)' }}>
+                        <h2 className="amber-text accent-4 center-align">Iniciar Sesión</h2>
+                        <form onSubmit={handleLogin}>
+                            <div className="input-field">
+                                <input
+                                    type="text"
+                                    id="username"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    className="white-text"
+                                />
+                                <label htmlFor="username">Usuario</label>
+                            </div>
+                            <div className="input-field">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="white-text"
+                                />
+                                <label htmlFor="password">Contraseña</label>
+                            </div>
+                            {error && <div className="red-text center-align">{error}</div>}
+                            <div className="center-align" style={{ marginTop: '20px' }}>
+                                <button className="btn waves-effect waves-light amber accent-4" type="submit">
+                                    Iniciar Sesión
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="input-field">
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="white-text"
-                    />
-                    <label htmlFor="password">Contraseña</label>
-                </div>
-                {error && <div className="red-text">{error}</div>}
-                <button className="btn waves-effect waves-light amber accent-4" type="submit">
-                    Iniciar Sesión
-                </button>
-            </form>
+            </div>
         </div>
     );
 }   

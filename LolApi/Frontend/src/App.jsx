@@ -1,6 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom";
 import { NavBar } from "./components/NavBar.jsx";
-import { Footer } from "./components/Footer.jsx";
+import { Footer } from "./components/footer.jsx";
 import { Suspense } from "react";
 
 console.log('🔄 Iniciando renderizado de App...');

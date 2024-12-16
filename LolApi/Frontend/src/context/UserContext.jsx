@@ -8,7 +8,6 @@ export function UserProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Verificar token y rol al cargar la aplicación
         const token = localStorage.getItem('token');
         const role = localStorage.getItem('userRole');
 

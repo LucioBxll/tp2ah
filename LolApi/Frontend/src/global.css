@@ -1,5 +1,8 @@
 /* Estilos generales */
 body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   background: rgb(24, 1, 24);
   background: linear-gradient(
     45deg,
@@ -7,7 +10,6 @@ body {
     rgba(20, 1, 36, 1) 53%,
     rgba(26, 14, 43, 1) 100%
   );
-  padding-top: 64px;
 }
 
 .none {
@@ -110,6 +112,7 @@ strong {
 .card {
   cursor: pointer;
   transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .card:hover {
@@ -215,8 +218,8 @@ body {
 }
 
 .main-content {
-  flex: 1 0 auto;
-  padding-bottom: 2rem; /* Espacio para el footer */
+  flex: 1;
+  padding: 20px;
 }
 
 /* Estilos CRUD */
@@ -810,4 +813,303 @@ input:-webkit-autofill:active {
 /* Color del círculo del switch cuando está encendido */
 .switch label input[type=checkbox]:checked + .lever:after {
   background-color: #ffab00 !important;
+}
+
+/* Estilos responsivos para formularios */
+.card-panel {
+  border-radius: 8px;
+  padding: 24px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+@media only screen and (max-width: 600px) {
+  .card-panel {
+    padding: 16px;
+    margin: 1rem 0;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .card-panel {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Mejoras en los inputs para móviles */
+.input-field input {
+  font-size: 16px !important; /* Previene el zoom en iOS */
+}
+
+.input-field label {
+  font-size: 1rem;
+}
+
+/* Espaciado adicional para dispositivos táctiles */
+@media (hover: none) {
+  .btn {
+    padding: 0 2rem;
+    height: 44px; /* Altura mínima recomendada para elementos táctiles */
+    line-height: 44px;
+  }
+
+  .input-field {
+    margin-bottom: 20px;
+  }
+}
+
+/* Estilos para el NavBar móvil */
+.sidenav {
+  background: rgb(24, 1, 24) !important;
+  background: linear-gradient(
+    45deg,
+    rgba(24, 1, 24, 1) 0%,
+    rgba(20, 1, 36, 1) 53%,
+    rgba(26, 14, 43, 1) 100%
+  ) !important;
+  z-index: 99999 !important;
+}
+
+/* Overlay del sidenav */
+.sidenav-overlay {
+  z-index: 99998 !important;
+}
+
+.sidenav li > a {
+  color: #ffab00 !important;
+  font-size: 1.2rem !important;
+}
+
+.sidenav li > a:hover {
+  background-color: rgba(255, 171, 0, 0.1) !important;
+}
+
+.sidenav-trigger {
+  color: #ffab00 !important;
+  margin: 0 18px !important;
+  z-index: 99997 !important;
+}
+
+.sidenav-trigger i {
+  font-size: 2rem !important;
+}
+
+/* Ajustes para el logo en móvil */
+@media only screen and (max-width: 992px) {
+  .brand-logo {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .brand-logo img {
+    height: 40px !important;
+    margin: 12px !important;
+  }
+}
+
+/* Ajustes para el nav en diferentes tamaños */
+@media only screen and (max-width: 600px) {
+  .nav-wrapper {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .nav-wrapper {
+    padding: 0 20px;
+  }
+}
+
+/* Estilos base para las páginas CRUD */
+.crud-page {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.crud-header {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.crud-title {
+    color: #e6e6e6;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.crud-subtitle {
+    color: #cccccc;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.crud-content {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes responsivos para diferentes tamaños de pantalla */
+@media only screen and (max-width: 600px) {
+    .crud-page {
+        padding: 1rem;
+    }
+
+    .crud-header {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .crud-title {
+        font-size: 1.8rem;
+    }
+
+    .crud-subtitle {
+        font-size: 1rem;
+    }
+
+    .crud-content {
+        padding: 1rem;
+    }
+
+    /* Ajustes para las cards en móvil */
+    .champion-card, .map-card {
+        margin: 0.5rem 0;
+    }
+
+    .champion-info, .map-info {
+        padding: 15px;
+    }
+
+    .champion-actions, .map-actions {
+        padding: 10px 15px;
+    }
+
+    /* Ajustes para los formularios en móvil */
+    .form-container {
+        padding: 15px;
+    }
+
+    .input-group {
+        gap: 10px;
+    }
+}
+
+/* Ajustes para tablets */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    .crud-page {
+        padding: 1.5rem;
+    }
+
+    .crud-header {
+        padding: 1.5rem;
+    }
+
+    .crud-title {
+        font-size: 2rem;
+    }
+
+    .crud-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Ajustes para el grid de cards */
+.champions-grid, .maps-grid {
+    display: grid;
+    gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .champions-grid, .maps-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    .champions-grid, .maps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .champions-grid, .maps-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Ajustes para el contenedor de carga */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Ajustes para los botones en móvil */
+@media only screen and (max-width: 600px) {
+    .crud-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .crud-actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+.card-title {
+  font-weight: bold !important;
+}
+
+.input-field input:focus + label {
+  color: #ffc400 !important;
+}
+
+.input-field input:focus {
+  border-bottom: 1px solid #ffc400 !important;
+  box-shadow: 0 1px 0 0 #ffc400 !important;
+}
+
+.input-field input {
+  border-bottom: 1px solid #ffc400 !important;
+}
+
+.input-field input + label {
+  color: #ffc400 !important;
+}
+
+.btn:hover {
+  background-color: #ffab00;
+}
+
+.btn:focus {
+  background-color: #ffab00;
 }

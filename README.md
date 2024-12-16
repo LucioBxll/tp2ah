@@ -25,7 +25,8 @@ Esta aplicación proporciona una interfaz intuitiva para explorar el universo de
 
 - Ver información detallada de campeones
 - Explorar los diferentes mapas del juego
-- Gestionar contenido (para usuarios autenticados)
+- Marcar campeones como favoritos
+- Gestionar contenido (solo usuarios administradores)
 - Realizar búsquedas y filtrar información
 
 
@@ -42,6 +43,7 @@ Esta aplicación proporciona una interfaz intuitiva para explorar el universo de
   - Recursos utilizados
 - Búsqueda y filtrado de campeones
 - Paginación para mejor navegación
+- Opción de marcar campeones como favoritos
 
 
 ### 🗺️ Sección de Mapas
@@ -55,7 +57,14 @@ Esta aplicación proporciona una interfaz intuitiva para explorar el universo de
 ### 👤 Sistema de Usuarios
 - Registro de nuevos usuarios
 - Inicio de sesión
-- Panel de administración para usuarios autorizados
+- Panel de administración exclusivo para administradores
+- Gestión de favoritos personalizada
+
+
+### 🔐 Niveles de Acceso
+- **Usuarios no registrados**: Pueden ver campeones y mapas
+- **Usuarios registrados**: Pueden marcar favoritos y gestionar su perfil
+- **Administradores**: Acceso completo al CRUD de campeones y mapas
 
 
 
